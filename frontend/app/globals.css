@@ -1,0 +1,138 @@
+/* === Tailwind Directives === */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Root Variables === */
+:root {
+  --background: #f2f2f2;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #0057b8;
+  --primary-foreground: #99ccff;
+  --secondary: #91c740 ;
+  --light : #f4f9eb;
+  --secondary-foreground: #050505;
+  --muted: #e5e5e5;
+  --muted-foreground: #737373;
+  --accent: #ffcc00;
+  --accent-foreground: #1a1a1a;
+  --destructive: #ff3b30;
+  --destructive-foreground: #99ccff;
+  --border: #e0e0e0;
+  --input: #e0e0e0;
+  --ring: #1a1a1a;
+  --radius: 0.5rem;
+}
+
+/* === Dark Mode Variables === */
+.dark {
+  --background: #1a1a1a;
+  --foreground: #ffffff;
+  --card-foreground: #99ccff;
+  --popover: #2a2a2a;
+  --popover-foreground: #99ccff;
+  --primary: #6b3e2d;
+  --primary-foreground: #99ccff;
+  --secondary: #2a2a2a;
+  --secondary-foreground: #99ccff;
+  --muted: #333333;
+  --muted-foreground: #999999;
+  --accent: #ffcc00;
+  --accent-foreground: #1a1a1a;
+  --destructive: #ff3b30;
+  --destructive-foreground: #99ccff;
+  --border: #333333;
+  --input: #333333;
+  --ring: #99ccff;
+}
+
+/* === Global Styles === */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* === Typography (Headings) === */
+
+.heading-one {
+  @apply text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-semibold 
+         leading-10 xl:leading-[50px] 2xl:!leading-[60px];
+}
+
+.heading-two {
+  @apply text-xl md:text-2xl lg:text-3xl font-semibold;
+}
+
+.heading-three {
+  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold;
+}
+
+.heading-four {
+  @apply text-base sm:text-lg md:text-xl lg:text-2xl font-medium;
+}
+
+.heading-five {
+  @apply text-sm sm:text-base md:text-lg lg:text-xl font-medium;
+}
+
+.heading-six {
+  @apply text-xs sm:text-sm md:text-base lg:text-lg font-medium;
+}
+
+
+/* === Custom Components === */
+  .pop {
+    @apply absolute top-3 left-3 bg-[var(--primary)] text-white text-xs font-bold px-2 py-1 rounded;
+  }
+
+
+
+  .bg-accent {
+    @apply bg-[var(--accent)] text-[var(--card)];
+  }
+
+ 
+
+.btn-v-1{
+  @apply bg-primary px-6 py-2 text-white rounded-md font-medium
+}
+.btn-v-2{
+  @apply bg-secondary px-6 py-2 text-white rounded-md font-medium
+}
+
+.error{
+  @apply text-red-500 text-sm font-medium
+}
+
+.trip-button {
+  @apply px-6 py-2 w-full text-sm font-medium transition-all;
+}
+
+.trip-button-active {
+  @apply bg-primary text-white shadow;
+}
+
+
+
+.search-button {
+  @apply bg-primary py-2 text-white px-8 rounded-md cursor-pointer flex items-center justify-center text-center;
+}
+
+/* === Additional Custom Styles === */
+.destination-card:hover img {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+
+.search-box {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
