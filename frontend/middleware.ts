@@ -6,7 +6,7 @@ export function middleware(request: any) {
   const isAuth = !!token;
   const pathname = url.pathname;
 
-  if (!isAuth && [ "/checkout" , "/success-payment"].includes(pathname)) {
+  if (!isAuth && [ "/checkout" , "/success-payment" , "/dashboard"].includes(pathname)) {
     return NextResponse.redirect(new URL("/login", url));
   }
 
@@ -18,5 +18,5 @@ export function middleware(request: any) {
 }
 
 export const config = {
-  matcher: [ "/checkout", "/login", "/register" , "/success-payment"],
+  matcher: [ "/checkout", "/login", "/register" , "/success-payment" , "/dashboard"],
 };

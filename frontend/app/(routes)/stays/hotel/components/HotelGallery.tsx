@@ -46,9 +46,7 @@ export default function HotelGallery({
             <MapPin size={16} />
             {city || "City"}, {country || "Country"}
           </p>
-          {stayType && (
-            <p className="text-primary text-base font-medium mt-1">{stayType}</p>
-          )}
+         
           <p className="text-gray-700 text-sm">{type || "Hotel Type"}</p>
         </div>
         <Link

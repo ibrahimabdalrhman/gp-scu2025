@@ -143,7 +143,7 @@ const NavBar = () => {
               </button>
               <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-1">
                 <Link href="/dashboard" className="block px-4 py-2 ">
-                  Dashboard
+                  Your Booking
                 </Link>
                 <div className="border-t border-gray-100 my-1"></div>
                 <button

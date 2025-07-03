@@ -1,6 +1,5 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import TourCard from "@/components/tourCard/TourCard";
@@ -29,10 +28,8 @@ const PopularCities = () => {
 
       {!isPending && !error && data?.length > 0 && (
         <Swiper
-          modules={[Autoplay]}
           spaceBetween={20}
           slidesPerView={1}
-          autoplay={{ delay: 3500, disableOnInteraction: false }}
           breakpoints={{
             640: { slidesPerView: 2 },
             1024: { slidesPerView: 4 },
