@@ -94,6 +94,7 @@ async function bootstrap() {
       const totalRooms = getRandomNumber(20, 100);
       const reservedRooms = getRandomNumber(0, totalRooms);
       const availableRooms = totalRooms - reservedRooms;
+      const priceValue=  getRandomNumber(50, 300)
 
       await hotelModel.create({
         name: HOTEL_NAMES[Math.floor(Math.random() * HOTEL_NAMES.length)] + ` - ${city.name}`,
@@ -106,8 +107,8 @@ async function bootstrap() {
         totalRooms,
         reservedRooms,
         availableRooms,
-        price: getRandomNumber(50, 300),
-        priceAfterDiscount: getRandomNumber(30, 250),
+        price: priceValue - 30 ,
+        priceAfterDiscount: priceValue,
         ratingsAverage: getRandomNumber(1, 5),
         ratingsQuantity: getRandomNumber(0, 500),
 

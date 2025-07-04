@@ -149,10 +149,10 @@ const HotelCard2 = ({
               </div>
               <div className="text-right">
                 <div className="text-sm text-gray-500 line-through">
-                  EGP {price?.toFixed(2)}
+                  EGP {priceAfterDiscount?.toFixed(2)}
                 </div>
                 <div className="text-2xl font-bold text-black">
-                  {priceAfterDiscount?.toFixed(2)}
+                  {price?.toFixed(2)}
                 </div>
           
                 <Link href={`stays/hotel/${id}`} className="mt-2 block btn-v-1">
