@@ -1,6 +1,7 @@
 "use client";
+
 import { Search } from "lucide-react";
-import InputField from "@/components/ui/InputField";
+import InputField from "@/components/ui/inputField";
 import SelectInput from "./ui/SelectInput";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,58 +9,58 @@ import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { SearchBoxSchema } from "@/rules/SearchBoxSchema";
 
-const sampleCities =[
+const sampleCities = [
   { name: 'Cairo', description: 'Capital of Egypt', countryName: 'Egypt' },
-{ name: 'Alexandria', description: 'Mediterranean port city', countryName: 'Egypt' },
-{ name: 'Giza', description: 'Home of the Great Pyramids', countryName: 'Egypt' },
-{ name: 'Luxor', description: 'Ancient city with temples', countryName: 'Egypt' },
-{ name: 'Aswan', description: 'Nubian city on the Nile', countryName: 'Egypt' },
-{ name: 'Port Said', description: 'Suez Canal entrance city', countryName: 'Egypt' },
-{ name: 'Suez', description: 'Southern Suez Canal city', countryName: 'Egypt' },
-{ name: 'Ismailia', description: 'Canal city between Suez and Port Said', countryName: 'Egypt' },
-{ name: 'Damietta', description: 'Port on Nile Delta', countryName: 'Egypt' },
-{ name: 'Mansoura', description: 'Capital of Dakahlia Governorate', countryName: 'Egypt' },
-{ name: 'Tanta', description: 'Major city in Nile Delta', countryName: 'Egypt' },
-{ name: 'Asyut', description: 'Largest city in Upper Egypt', countryName: 'Egypt' },
-{ name: 'Faiyum', description: 'City with ancient water wheels', countryName: 'Egypt' },
-{ name: 'Zagazig', description: 'Capital of Sharqia Governorate', countryName: 'Egypt' },
-{ name: 'Ismailia', description: 'Canal city', countryName: 'Egypt' },
-{ name: 'Kafr El Sheikh', description: 'Agricultural city in Nile Delta', countryName: 'Egypt' },
-{ name: 'Assiut', description: 'Important Upper Egyptian city', countryName: 'Egypt' },
-{ name: 'Damanhur', description: 'Capital of Beheira Governorate', countryName: 'Egypt' },
-{ name: 'Minya', description: 'Middle Egypt cultural center', countryName: 'Egypt' },
-{ name: 'Beni Suef', description: 'Agricultural city on Nile', countryName: 'Egypt' },
-{ name: 'Qena', description: 'Nile city near Luxor', countryName: 'Egypt' },
-{ name: 'Sohag', description: 'Upper Egyptian city', countryName: 'Egypt' },
-{ name: 'Hurghada', description: 'Red Sea resort city', countryName: 'Egypt' },
-{ name: 'Sharm El Sheikh', description: 'Sinai resort city', countryName: 'Egypt' },
-{ name: 'Arish', description: 'Capital of North Sinai', countryName: 'Egypt' },
-{ name: 'Marsa Matruh', description: 'Mediterranean coastal city', countryName: 'Egypt' },
-{ name: 'El Mahalla El Kubra', description: 'Industrial textile city', countryName: 'Egypt' },
-{ name: '10th of Ramadan City', description: 'Industrial city', countryName: 'Egypt' },
-{ name: '6th of October City', description: 'Satellite city of Cairo', countryName: 'Egypt' },
-{ name: 'New Cairo', description: 'Modern extension of Cairo', countryName: 'Egypt' },
-{ name: 'Shebin El Kom', description: 'Capital of Monufia Governorate', countryName: 'Egypt' },
-{ name: 'Banha', description: 'Capital of Qalyubia Governorate', countryName: 'Egypt' },
-{ name: 'Qalyub', description: 'Nile Delta city', countryName: 'Egypt' },
-{ name: 'Rosetta', description: 'Historic Nile mouth city', countryName: 'Egypt' },
-{ name: 'Edku', description: 'Mediterranean coastal town', countryName: 'Egypt' },
-{ name: 'Desouk', description: 'Nile Delta city', countryName: 'Egypt' },
-{ name: 'Abu Kabir', description: 'Sharqia Governorate city', countryName: 'Egypt' },
-{ name: 'El Tor', description: 'Capital of South Sinai', countryName: 'Egypt' },
-{ name: 'Ras Gharib', description: 'Red Sea coastal city', countryName: 'Egypt' },
-{ name: 'Safaga', description: 'Red Sea port city', countryName: 'Egypt' },
-{ name: 'El Kharga', description: 'Oasis city in Western Desert', countryName: 'Egypt' },
-{ name: 'Dakhla', description: 'Western Desert oasis', countryName: 'Egypt' },
-{ name: 'Farafra', description: 'Smallest Western Desert oasis', countryName: 'Egypt' },
-{ name: 'Bahariya', description: 'Oasis near Cairo', countryName: 'Egypt' },
-{ name: 'Siwa', description: 'Remote desert oasis', countryName: 'Egypt' },
-{ name: 'St. Catherine', description: 'Sinai mountain city', countryName: 'Egypt' },
-{ name: 'Rafah', description: 'Border city with Gaza', countryName: 'Egypt' },
-{ name: 'El Arish', description: 'Capital of North Sinai', countryName: 'Egypt' },
-{ name: 'Bir El Abd', description: 'North Sinai city', countryName: 'Egypt' },
-{ name: 'El Qantara', description: 'Suez Canal crossing city', countryName: 'Egypt' },
-{ name: 'New Valley', description: 'Western Desert capital', countryName: 'Egypt' },
+  { name: 'Alexandria', description: 'Mediterranean port city', countryName: 'Egypt' },
+  { name: 'Giza', description: 'Home of the Great Pyramids', countryName: 'Egypt' },
+  { name: 'Luxor', description: 'Ancient city with temples', countryName: 'Egypt' },
+  { name: 'Aswan', description: 'Nubian city on the Nile', countryName: 'Egypt' },
+  { name: 'Port Said', description: 'Suez Canal entrance city', countryName: 'Egypt' },
+  { name: 'Suez', description: 'Southern Suez Canal city', countryName: 'Egypt' },
+  { name: 'Ismailia', description: 'Canal city between Suez and Port Said', countryName: 'Egypt' },
+  { name: 'Damietta', description: 'Port on Nile Delta', countryName: 'Egypt' },
+  { name: 'Mansoura', description: 'Capital of Dakahlia Governorate', countryName: 'Egypt' },
+  { name: 'Tanta', description: 'Major city in Nile Delta', countryName: 'Egypt' },
+  { name: 'Asyut', description: 'Largest city in Upper Egypt', countryName: 'Egypt' },
+  { name: 'Faiyum', description: 'City with ancient water wheels', countryName: 'Egypt' },
+  { name: 'Zagazig', description: 'Capital of Sharqia Governorate', countryName: 'Egypt' },
+  { name: 'Ismailia', description: 'Canal city', countryName: 'Egypt' },
+  { name: 'Kafr El Sheikh', description: 'Agricultural city in Nile Delta', countryName: 'Egypt' },
+  { name: 'Assiut', description: 'Important Upper Egyptian city', countryName: 'Egypt' },
+  { name: 'Damanhur', description: 'Capital of Beheira Governorate', countryName: 'Egypt' },
+  { name: 'Minya', description: 'Middle Egypt cultural center', countryName: 'Egypt' },
+  { name: 'Beni Suef', description: 'Agricultural city on Nile', countryName: 'Egypt' },
+  { name: 'Qena', description: 'Nile city near Luxor', countryName: 'Egypt' },
+  { name: 'Sohag', description: 'Upper Egyptian city', countryName: 'Egypt' },
+  { name: 'Hurghada', description: 'Red Sea resort city', countryName: 'Egypt' },
+  { name: 'Sharm El Sheikh', description: 'Sinai resort city', countryName: 'Egypt' },
+  { name: 'Arish', description: 'Capital of North Sinai', countryName: 'Egypt' },
+  { name: 'Marsa Matruh', description: 'Mediterranean coastal city', countryName: 'Egypt' },
+  { name: 'El Mahalla El Kubra', description: 'Industrial textile city', countryName: 'Egypt' },
+  { name: '10th of Ramadan City', description: 'Industrial city', countryName: 'Egypt' },
+  { name: '6th of October City', description: 'Satellite city of Cairo', countryName: 'Egypt' },
+  { name: 'New Cairo', description: 'Modern extension of Cairo', countryName: 'Egypt' },
+  { name: 'Shebin El Kom', description: 'Capital of Monufia Governorate', countryName: 'Egypt' },
+  { name: 'Banha', description: 'Capital of Qalyubia Governorate', countryName: 'Egypt' },
+  { name: 'Qalyub', description: 'Nile Delta city', countryName: 'Egypt' },
+  { name: 'Rosetta', description: 'Historic Nile mouth city', countryName: 'Egypt' },
+  { name: 'Edku', description: 'Mediterranean coastal town', countryName: 'Egypt' },
+  { name: 'Desouk', description: 'Nile Delta city', countryName: 'Egypt' },
+  { name: 'Abu Kabir', description: 'Sharqia Governorate city', countryName: 'Egypt' },
+  { name: 'El Tor', description: 'Capital of South Sinai', countryName: 'Egypt' },
+  { name: 'Ras Gharib', description: 'Red Sea coastal city', countryName: 'Egypt' },
+  { name: 'Safaga', description: 'Red Sea port city', countryName: 'Egypt' },
+  { name: 'El Kharga', description: 'Oasis city in Western Desert', countryName: 'Egypt' },
+  { name: 'Dakhla', description: 'Western Desert oasis', countryName: 'Egypt' },
+  { name: 'Farafra', description: 'Smallest Western Desert oasis', countryName: 'Egypt' },
+  { name: 'Bahariya', description: 'Oasis near Cairo', countryName: 'Egypt' },
+  { name: 'Siwa', description: 'Remote desert oasis', countryName: 'Egypt' },
+  { name: 'St. Catherine', description: 'Sinai mountain city', countryName: 'Egypt' },
+  { name: 'Rafah', description: 'Border city with Gaza', countryName: 'Egypt' },
+  { name: 'El Arish', description: 'Capital of North Sinai', countryName: 'Egypt' },
+  { name: 'Bir El Abd', description: 'North Sinai city', countryName: 'Egypt' },
+  { name: 'El Qantara', description: 'Suez Canal crossing city', countryName: 'Egypt' },
+  { name: 'New Valley', description: 'Western Desert capital', countryName: 'Egypt' },
   { name: 'Paris', description: 'Capital of France', countryName: 'France' },
   { name: 'Rome', description: 'Capital of Italy', countryName: 'Italy' },
   { name: 'Tokyo', description: 'Capital of Japan', countryName: 'Japan' },
@@ -384,7 +385,7 @@ const SearchBox = () => {
   const handleCityInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInputValue(value);
-    setValue("city", value);
+    setValue("city", value, { shouldValidate: true });
 
     if (value.length > 0) {
       const filtered = sampleCities.filter(city =>
@@ -399,9 +400,9 @@ const SearchBox = () => {
     }
   };
 
-  const handleSuggestionClick = (city: string) => {
-    setValue("city", city);
-    setInputValue(city);
+  const handleSuggestionClick = (cityName: string) => {
+    setValue("city", cityName, { shouldValidate: true });
+    setInputValue(cityName);
     setShowSuggestions(false);
   };
 
@@ -426,6 +427,10 @@ const SearchBox = () => {
             onChange={handleCityInputChange}
             onFocus={() => inputValue.length > 0 && setShowSuggestions(true)}
             onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
+            autoComplete="off"
+            name="search-city" // Add a unique name that Chrome won't recognize
+            data-lpignore="true" // For LastPass
+            data-form-type="other" // For Chrome
           />
           {showSuggestions && citySuggestions.length > 0 && (
             <div className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg">
@@ -433,6 +438,7 @@ const SearchBox = () => {
                 <div
                   key={index}
                   className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                  onMouseDown={(e) => e.preventDefault()} // Prevent input blur
                   onClick={() => handleSuggestionClick(city.name)}
                 >
                   <div className="font-medium">{city.name}</div>
@@ -460,11 +466,11 @@ const SearchBox = () => {
             render={({ field }) => {
               const selectedOption = field.value
                 ? {
-                    value: field.value,
-                    label:
-                      field.value.charAt(0).toUpperCase() +
-                      field.value.slice(1),
-                  }
+                  value: field.value,
+                  label:
+                    field.value.charAt(0).toUpperCase() +
+                    field.value.slice(1),
+                }
                 : null;
               return (
                 <SelectInput
